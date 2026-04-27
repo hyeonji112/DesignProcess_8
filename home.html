@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>홈</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="stylesheet" href="style.css">
+  
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Pretendard', 'sans-serif'] },
+          colors: { primary: '#000000', brand: '#10B981', cardBg: '#EEEEEE' }
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel" src="components.js"></script>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    const HomeApp = () => {
+      const [isModalOpen, setIsModalOpen] = useState(false);
+
+      return (
+        <div className="device-mockup">
+          
+          {/* 상단 고정 헤더 영역 */}
+          <div className="sticky top-0 z-40 bg-white shadow-sm border-b border-gray-100">
+            <StatusBar />
+            <div className="px-6 py-2">
+              <h1 className="text-[24px] font-bold tracking-wider" style={{ fontFamily: "'Pretendard', sans-serif" }}>TITLE</h1>
+            </div>
+          </div>
+
+          {/* 스크롤 가능한 본문 영역 */}
+          <div className="app-content pb-[100px]">
+            
+            {/* 1. 이미지 배너 영역 */}
+            <div className="w-full h-[232px] relative flex flex-col justify-between p-6 overflow-hidden">
+              <img 
+                src="img/cafe.webp" 
+                alt="디데이 배경" 
+                className="absolute inset-0 w-full h-full object-cover z-0"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent z-0"></div>
+              
+              <div className="z-10 relative text-white drop-shadow-md">
+                <span className="font-bold text-[16px] mr-2">D-12</span>
+                <span className="text-[11px] font-medium">5월 1일 성수동 데이트</span>
+              </div>
+              <div className="z-10 relative text-white drop-shadow-md">
+                <p className="text-[13px] font-medium tracking-wide">주말 성수 약속이 기다려요!</p>
+              </div>
+            </div>
+
+            {/* 메인 콘텐츠 영역 */}
+            <div className="px-6 py-8 relative z-20 bg-white rounded-t-xl -mt-2">
+              
+              {/* 2. 오늘의 안심 소비 금액 */}
+              <div className="mb-12">
+                <p className="text-[12px] text-gray-500 mb-1">2026. 04. 18. SAT</p>
+                <h2 className="text-[20px] font-bold text-black mb-8">오늘의 안심 소비 금액</h2>
+                
+                <div className="relative w-[260px] h-[130px] mx-auto mb-2">
+                  <svg viewBox="0 0 200 110" className="w-full h-full overflow-visible">
+                    <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#D9D9D9" strokeWidth="18" strokeLinecap="round" />
+                    <path d="M 20 100 A 80 80 0 0 1 100 20" fill="none" stroke="#474747" strokeWidth="18" strokeLinecap="round" />
+                  </svg>
+                  <div className="absolute inset-x-0 bottom-1 text-center flex flex-col items-center">
+                    <span className="text-[26px] font-bold text-black leading-none mb-1">25,000원</span>
+                    <span className="text-[13px] font-bold text-black">/ 50,000</span>
+                  </div>
+                </div>
+              </div>
+
+              <hr className="border-black mb-8" />
+
+              {/* 최근 소비 내역 섹션 */}
+              <div className="mb-10">
+                <h2 className="text-[20px] font-bold text-black mb-4">최근 소비 내역</h2>
+                
+                <div className="bg-[#FAFAFA] shadow-[inset_0_1px_3px_rgba(0,0,0,0.1)] rounded-xl p-5 relative">
+                  {/* 타임라인 세로선 (위치 재조정) */}
+                  <div className="absolute left-[64px] top-[30px] bottom-[50px] w-[2px] bg-[#B7B7B7]"></div>
+                  
+                  {/* 날짜가 찌그러지지 않도록 whitespace-nowrap 및 shrink-0 추가 */}
+                  <div className="flex items-center mb-4 relative z-10">
+                    <span className="text-[12px] text-black text-right w-[48px] shrink-0 whitespace-nowrap mr-[10px]">4월 18일</span>
+                    <div className="w-[14px] h-[14px] rounded-full bg-[#D9D9D9] flex items-center justify-center mr-[12px]">
+                      <div className="w-[8px] h-[8px] rounded-full bg-[#B7B7B7]"></div>
+                    </div>
+                    <span className="text-[12px] font-bold text-black">57,300원</span>
+                  </div>
+
+                  <div className="ml-[72px] space-y-[6px] mb-6">
+                    <div className="flex justify-between w-[130px] text-[11px] text-black font-medium">
+                      <span>홍익문화사</span><span>-3,300원</span>
+                    </div>
+                    <div className="flex justify-between w-[130px] text-[11px] text-black font-medium">
+                      <span>다이소</span><span>-20,000원</span>
+                    </div>
+                    <div className="flex justify-between w-[130px] text-[11px] text-black font-medium">
+                      <span>우아한형제들</span><span>-34,000원</span>
+                    </div>
+                  </div>
+
+                  {/* ★ list.html 연결 링크 추가 ★ */}
+                  <button 
+                    onClick={() => window.location.href = 'list.html'}
+                    className="w-full flex items-center justify-center text-[12px] text-black mt-2 active:opacity-50 transition"
+                  >
+                    전체 보기
+                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 5l7 7-7 7"></path></svg>
+                  </button>
+                </div>
+              </div>
+
+              <hr className="border-black mb-8" />
+
+              {/* 소비 돋보기 섹션 */}
+              <div className="mb-4">
+                <h2 className="text-[20px] font-bold text-black mb-1">소비 돋보기</h2>
+                <p className="text-[10px] text-black mb-4">사고 싶은 물건이 생겼나요? 내 가치관에 맞는 기분 좋은 소비인지 확인해 드릴게요.</p>
+                
+                <button onClick={() => setIsModalOpen(true)} className="w-full h-[96px] bg-[#FAFAFA] shadow-[inset_0_1px_3px_rgba(0,0,0,0.1)] rounded-xl flex flex-col items-center justify-center active:scale-[0.98] transition">
+                  <svg className="w-6 h-6 text-[#545F71] mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  <span className="text-[13px] font-bold text-[#545F71]">살까, 말까?</span>
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+          <BottomNav active="home" />
+          <ConsumptionModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        </div>
+      );
+    };
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<HomeApp />);
+  </script>
+</body>
+</html>
